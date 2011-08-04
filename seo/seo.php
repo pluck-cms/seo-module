@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of the seo enhancements module for pluck
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -30,15 +30,15 @@ function seo_info() {
 
 function is_apache_module() {
 $result = false;
-    if (function_exists('apache_get_modules'))
-         $result = in_array('mod_rewrite', apache_get_modules());
-    else {
-        ob_start();
-        phpinfo(INFO_MODULES);
-        $contents = ob_get_contents();
-        ob_end_clean();
-        $result = (strpos($contents, 'mod_rewrite') !== false);
-    }
+	if (function_exists('apache_get_modules'))
+		$result = in_array('mod_rewrite', apache_get_modules());
+	else {
+		ob_start();
+		phpinfo(INFO_MODULES);
+		$contents = ob_get_contents();
+		ob_end_clean();
+		$result = (strpos($contents, 'mod_rewrite') !== false);
+	}
 	return ($result && file_exists('.htaccess')) ? true : false;
 }
 

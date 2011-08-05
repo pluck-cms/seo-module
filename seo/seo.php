@@ -62,4 +62,12 @@ function seo_album_url_prefix($prefix) {
 	else
 		return;
 }
+
+function seo_theme_content($content) {
+	if (is_apache_module()) {
+		$content = str_replace('href="?file=', 'href="'.SITE_URL.'/', $content);
+		$content = str_replace('src="images/', 'src="'.SITE_URL.'/images/', $content);
+	}
+	return $content;
+}
 ?>

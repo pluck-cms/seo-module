@@ -27,7 +27,6 @@ function seo_info() {
 		'compatibility' => '4.7'
 	);
 }
-
 function is_apache_module() {
 $result = false;
 	if (function_exists('apache_get_modules'))
@@ -41,28 +40,30 @@ $result = false;
 	}
 	return ($result && file_exists('.htaccess')) ? true : false;
 }
-
 function seo_page_url_prefix($prefix) {
 	if (is_apache_module() && basename($_SERVER['PHP_SELF']) != 'admin.php')
 		return $prefix = SITE_URL.'/';
 	else
 		return;
 }
-
-function seo_blog_url_prefix($prefix) {
-	if (is_apache_module())
-		return $prefix = '/blog/';
-	else
-		return;
-}
-
 function seo_album_url_prefix($prefix) {
 	if (is_apache_module())
 		return $prefix = '/album/';
 	else
 		return;
 }
-
+function seo_blog_url_prefix($prefix) {
+	if (is_apache_module())
+		return $prefix = '/blog/';
+	else
+		return;
+}
+function seo_blog_cat_prefix($prefix) {
+	if (is_apache_module())
+		return $prefix = '/blog-category/';
+	else
+		return;
+}
 function seo_theme_content($content) {
 	if (is_apache_module()) {
 		$content = str_replace('href="?file=', 'href="'.SITE_URL.'/', $content);

@@ -33,14 +33,10 @@ function seo_page_admin_seo() {
 	</p>
 	<?php
 	//First check for Apache and mod_rewrite module.
-	if (function_exists('apache_get_modules')) {
-		if (!in_array('mod_rewrite', apache_get_modules()))
-			$errors[] = show_error('The mod_rewrite module for Apache is not enabled on your server. Please ask the system administrator to enable it.', 1, true);
-		if (!file_exists('.htaccess'))
+	if (!is_apache_module(false))
+		$errors[] = show_error('The mod_rewrite module for Apache is not enabled on your server, or you are not running an Apache server. This module supports only Apache servers. Please ask the system administrator to enable it.', 1, true);
+	if (!file_exists('.htaccess'))
 			$errors[] = show_error('In order for this module to function properly, you should copy the file called <i>.htaccess</i> (you can find it in the <i>data/modules/seo</i> directory) to the root directory of your pluck installation, using your FTP-application.', 1, true);
-	}
-	else
-		$errors[] = show_error('You are not running an Apache server. This module only supports Apache servers.', 1, true);
 
 	if (!isset($errors))
 		show_error('The seo enhancements module has been configured properly.', 3);

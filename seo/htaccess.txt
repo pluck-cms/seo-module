@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# If you want to redirect from www.site.com to site.com, remove hash from those two lines below, and change site.com to your adress
+	# RewriteCond %{HTTP_HOST} ^www\. [NC]
+	# RewriteRule ^(.*)$ http://site.com/$1 [R=301,L]
+
+	# If you want to redirect from site.com to www.site.com, remove hash from those two lines below
+	# RewriteCond %{HTTP_HOST} !^www\. [NC]
+	# RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)/\.album/(.+)$ index.php?file=$1&module=albums&page=viewalbum&album=$2 [QSA,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)/\.blog/(.+)$ index.php?file=$1&module=blog&page=viewpost&post=$2 [QSA,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)/\.blog-category/(.+)$ index.php?file=$1&module=blog&page=viewcat&cat=$2 [QSA,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)$ index.php?file=$1 [QSA,L]
+</IfModule>

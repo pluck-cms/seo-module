@@ -20,7 +20,7 @@ function seo_info() {
 	return array(
 		'name'          => 'seo enhancements',
 		'intro'         => 'This module enables rewritten URLs. See "module" page for webserver configuration hints.',
-		'version'       => '0.3',
+		'version'       => '0.2',
 		'author'        => $lang['general']['pluck_dev_team'],
 		'website'       => 'http://www.pluck-cms.org',
 		'icon'          => 'images/seo.png',
@@ -29,7 +29,10 @@ function seo_info() {
 }
 
 function is_apache() {
-	return $_SERVER['SERVER_SOFTWARE'] == 'Apache';
+	if (strpos($_SERVER['SERVER_SOFTWARE'],'Apache') !== false)
+		return TRUE;
+	else
+		return FALSE;
 }
 
 function seo_module_is_on() {
@@ -66,11 +69,11 @@ function seo_settings_default() {
 }
 
 function seo_admin_module_settings_beforepost() {
-	echo '<span class="kop2">seo</span>
+	echo '<span class="kop2">seo enhancements</span>
 		<table>
 			<tr>
 				<td><input type="checkbox" name="enable_seo" id="enable_seo" value="true" ' . (seo_module_is_on() ? ' checked="checked"' : '') . '/></td>
-				<td><label for="enable_seo">&emsp; Enable seo module</label></td>
+				<td><label for="enable_seo">&emsp; Enable URL rewriting</label></td>
 			</tr>
 		</table><br />';
 }

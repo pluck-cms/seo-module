@@ -20,11 +20,11 @@ function seo_info() {
 	return array(
 		'name'          => 'seo enhancements',
 		'intro'         => 'This module enables rewritten URLs. See "module" page for webserver configuration hints.',
-		'version'       => '0.3',
+		'version'       => '0.4',
 		'author'        => $lang['general']['pluck_dev_team'],
 		'website'       => 'http://www.pluck-cms.org',
 		'icon'          => 'images/seo.png',
-		'compatibility' => '4.74'
+		'compatibility' => '4.7'
 	);
 }
 

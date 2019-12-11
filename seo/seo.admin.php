@@ -45,7 +45,7 @@ function seo_page_admin_seo() {
 				if (seo_module_is_on()) {
 					show_error('The seo enhancements module is enabled and the web server is configured properly.', 3);
 				} else {
-					show_error('The seo enhancements module is disabled but the web server is configured to rewrite URLs. You should delete the <i>.htaccess</i> file in the root directory of your pluck installation.', 1);
+					show_error('The seo enhancements module is disabled but the web server is configured to rewrite URLs. You should delete the <i>.htaccess</i> file in the root directory of your pluck installation, or activate the seo module <a href="admin.php?action=modulesettings">here</a>.', 1);
 				}
 			} else {
 				if (seo_module_is_on()) {

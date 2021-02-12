@@ -17,11 +17,20 @@ defined('IN_PLUCK') or exit('Access denied!');
 
 function seo_info() {
 	global $lang;
+
+	//quickfix for issue #4, needs to be cleaned up
+	//first loads the $lang variable is not yet installed
+	if ($lang){
+		$seoauthor = $lang['general']['pluck_dev_team'];
+	} else {
+		$seoauthor = "pluck development team";
+	}
+
 	return array(
 		'name'          => 'seo enhancements',
 		'intro'         => 'This module enables rewritten URLs. See "module" page for webserver configuration hints.',
 		'version'       => '0.4',
-		'author'        => $lang['general']['pluck_dev_team'],
+		'author'        => $seoauthor,
 		'website'       => 'http://www.pluck-cms.org',
 		'icon'          => 'images/seo.png',
 		'compatibility' => '4.7'

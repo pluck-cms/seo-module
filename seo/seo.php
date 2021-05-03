@@ -22,13 +22,18 @@ function seo_info() {
 	//first loads the $lang variable is not yet installed
 	if ($lang){
 		$seoauthor = $lang['general']['pluck_dev_team'];
+		$seoname = $lang['seo']['title'];
+		$seointro = $lang['seo']['intro'];
 	} else {
+		//defaults in english
+		$seoname = 'seo enhancements';
+		$seointro = 'This module enables rewritten URLs. See "module" page for webserver configuration hints.';
 		$seoauthor = "pluck development team";
 	}
 
 	return array(
-		'name'          => 'seo enhancements',
-		'intro'         => 'This module enables rewritten URLs. See "module" page for webserver configuration hints.',
+		'name'          => $seoname,
+		'intro'         => $seointro,
 		'version'       => '0.4',
 		'author'        => $seoauthor,
 		'website'       => 'http://www.pluck-cms.org',
@@ -78,11 +83,11 @@ function seo_settings_default() {
 }
 
 function seo_admin_module_settings_beforepost() {
-	echo '<span class="kop2">seo enhancements</span>
+	echo '<span class="kop2">'.$lang['seo']['title'].'</span>
 		<table>
 			<tr>
 				<td><input type="checkbox" name="enable_seo" id="enable_seo" value="true" ' . (seo_module_is_on() ? ' checked="checked"' : '') . '/></td>
-				<td><label for="enable_seo">&emsp; Enable URL rewriting</label></td>
+				<td><label for="enable_seo">&emsp; '.$lang['seo']['enablecheckbox'].'</label></td>
 			</tr>
 		</table><br />';
 }

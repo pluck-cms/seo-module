@@ -83,6 +83,7 @@ function seo_settings_default() {
 }
 
 function seo_admin_module_settings_beforepost() {
+	global $lang;
 	echo '<span class="kop2">'.$lang['seo']['title'].'</span>
 		<table>
 			<tr>
